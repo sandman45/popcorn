@@ -1,6 +1,3 @@
-/**
- * Created by matthew.sanders on 2/19/15.
- */
 var couchConfig = require('config').couch;
 var nano = require('nano')("http://"+couchConfig.url+":"+couchConfig.port);
 var q = require('q');
@@ -13,9 +10,9 @@ var CouchService = (function(){
    * @param databaseName
    * @constructor
    */
-  function CouchService(databaseName){
+  function CouchService( databaseName ){
     this.db_name = databaseName;
-    this.db = nano.use(this.db_name);
+    this.db = nano.use( this.db_name );
   };
 
   /**
@@ -105,6 +102,26 @@ var CouchService = (function(){
         });
       }
     }
+  };
+
+  /**
+   * remove
+   * @param doc
+   * @param destroy
+   */
+  CouchService.prototype.getView = function ( designName,viewName ) {
+    var d = q.defer();
+
+    this.db.view( designName, viewName, function(err, body){
+      if(!err){
+        d.resolve( body.rows );
+      }else{
+        d.reject( err );
+      }
+    });
+
+
+    return d.promise;
   };
 
   /**

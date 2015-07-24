@@ -1,5 +1,5 @@
 
-var CouchService = require('../routeUtil/couchService');
+var CouchService = require('../service/couchService');
 var couchService = new CouchService('users');
 var crypto = require('crypto-js');
 
