@@ -37,7 +37,7 @@ module.exports = function(app){
      res.send(200, "success");
   });
 
-  app.get('/playground/user/:id', function( req, res, next ){
+  app.get('/popcorn/user/:id', function( req, res, next ){
       couchService.get( req.params.id === "refresh" ? req.session.email : req.params.id ).then( function( d ){
         res.send( 200, d );
       })

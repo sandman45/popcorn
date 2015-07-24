@@ -23,7 +23,8 @@
     "express-session": "^1.11.3",
     "lodash": "^3.10.0",
     "multer": "^1.0.1",
-    "nano": "^6.1.4"
+    "nano": "^6.1.4",
+    "q": "^1.4.1"
   },
   "devDependencies": {}
 }
