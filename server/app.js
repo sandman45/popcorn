@@ -15,6 +15,12 @@ var _ = require('lodash');
 var app = express();
 var server = http.createServer( app );
 
+// parse application/x-www-form-urlencoded
+app.use( bodyParser.urlencoded({ extended: true }) );
+
+// parse application/json
+app.use( bodyParser.json() );
+
 var store = new ConnectCouchDB({
   //Name of Database for session storage
   name: 'sessions',

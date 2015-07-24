@@ -4,7 +4,7 @@
 var couchConfig = require('config').couch;
 var nano = require('nano')("http://"+couchConfig.url+":"+couchConfig.port);
 var q = require('q');
-var _ = require('underscore');
+var _ = require('lodash');
 
 var CouchService = (function(){
 
