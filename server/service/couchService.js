@@ -105,21 +105,21 @@ var CouchService = (function(){
   };
 
   /**
-   * remove
-   * @param doc
-   * @param destroy
+   * getView
+   * @param designName
+   * @param viewName
+   * @returns {promise|*|Q.promise}
    */
-  CouchService.prototype.getView = function ( designName,viewName ) {
+  CouchService.prototype.getView = function ( designName, viewName, qs ) {
     var d = q.defer();
 
-    this.db.view( designName, viewName, function(err, body){
+    this.db.view( designName, viewName, qs, function( err, body ){
       if(!err){
         d.resolve( body.rows );
       }else{
         d.reject( err );
       }
     });
-
 
     return d.promise;
   };
