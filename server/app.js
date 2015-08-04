@@ -1,25 +1,23 @@
-var config = require('config');
-var fs = require('fs');
-var http = require('http');
-var express = require('express');
+var config          = require('config');
+var fs              = require('fs');
+var http            = require('http');
+var express         = require('express');
+var session         = require('express-session');
+var bodyParser      = require('body-parser');
+//var connect         = require('connect');
+var ConnectCouchDB  = require('connect-couchdb')(session);
+//var Cookies         = require( "cookies" );
+var _               = require('lodash');
 
-var session = require('express-session');
-var bodyParser = require('body-parser');
-var multer  = require('multer');
-var upload = multer({ dest: 'uploads/' });
-var connect = require('connect');
-var ConnectCouchDB = require('connect-couchdb')(session);
-var Cookies = require( "cookies" );
-var _ = require('lodash');
-
-var app = express();
-var server = http.createServer( app );
+var app             = express();
+var server          = http.createServer( app );
 
 // parse application/x-www-form-urlencoded
 app.use( bodyParser.urlencoded({ extended: true }) );
 
 // parse application/json
 app.use( bodyParser.json() );
+
 
 var store = new ConnectCouchDB({
   //Name of Database for session storage
@@ -31,29 +29,24 @@ var store = new ConnectCouchDB({
   setThrottle: config.session.throttle
 });
 
-
 /**
  * allowCrossDomain
  * @param req
  * @param res
  * @param next
  */
-var allowCrossDomain = function(req,res,next){
+var allowCrossDomain = function( req, res, next ){
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
   next();
 };
 
-
 app.use( session({
   secret:'popcorn is good',
   store:store,
   cookie:{maxAge:config.session.cookie.maxAge}
 }));
-
-
-
 
 app.use( express.static('src') );
 app.use( allowCrossDomain );
@@ -70,11 +63,12 @@ app.all("/popcorn/*", securityCheck, function(req, res, next){
   next();
 });
 
-
 // Load all other routes
 fs.readdirSync( __dirname + '/routes' ).forEach( function( file ) {
   require( './routes/' + file )( app );
 });
+
+app.use(express.static('client'));
 
 var port = process.env.PORT || 8081;
 var env = process.env.NODE_ENV || 'default';
