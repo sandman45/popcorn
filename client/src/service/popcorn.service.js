@@ -1,6 +1,4 @@
-/**
- * Created by matthew.sanders on 2/19/15.
- */
+
 var app = angular.module('popcorn');
 
 app.factory('service', function( $http, $q, $location, $log, config ) {
@@ -105,10 +103,10 @@ app.factory('service', function( $http, $q, $location, $log, config ) {
         d.resolve( data );
       }
     })
-      .error( function( err, code ) {
-        d.reject( err );
-        $log.error( err);
-      });
+    .error( function( err, code ) {
+      d.reject( err );
+      $log.error( err);
+    });
     return d.promise;
   };
 
@@ -120,10 +118,26 @@ app.factory('service', function( $http, $q, $location, $log, config ) {
         d.resolve( data );
       }
     })
-      .error( function( err, code ) {
-        d.reject( err );
-        $log.error( err );
-      });
+    .error( function( err, code ) {
+      d.reject( err );
+      $log.error( err );
+    });
+    return d.promise;
+  };
+
+
+  service.getChallenge = function( ){
+    var d = $q.defer();
+    var _url = url + "popcorn/getChallenge";
+    $http.get( _url ).success( function( data, status, headers, config ) {
+      if( data ){
+        d.resolve( data );
+      }
+    })
+    .error( function( err, code ) {
+      d.reject( err );
+      $log.error( err);
+    });
     return d.promise;
   };
 
