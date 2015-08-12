@@ -11,6 +11,7 @@ controllers.controller('homeCtrl', ['$scope', 'service', '$location', '$modal', 
         $scope.challenges = data;
         $log.info(JSON.stringify(model));
         $log.info(JSON.stringify(data));
+        $scope.model = model;
       });
 
     };
