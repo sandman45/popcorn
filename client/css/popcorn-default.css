@@ -1,0 +1,47 @@
+
+
+.popcornBackground{
+    background-image: url('../img/popcorn-background.jpg');
+}
+
+.default-page{
+    font-family: "Roboto";
+    border-radius: 5px;
+    padding:12px;
+    margin-left: 12px;
+    margin-right: 12px;
+    background-color: #AA4639;
+    color:white;
+}
+
+.challenge-list{
+    padding: 12px;
+
+}
+
+.challenge-item{
+    position: relative;
+    border-radius: 5px;
+    padding: 12px;
+    background-color: #D4766A;
+    margin-bottom: 3px;
+    cursor: pointer;
+}
+
+.challenge-item:hover{
+    background-color: #FFB4AA;
+}
+
+.challenge-name{
+    position: absolute;
+    top: 10px;
+    font-size: medium;
+    margin-left: 20px;
+
+}
+
+.challenge-created-by{
+    position: absolute;
+    right: 10px;
+    bottom: 0px;
+}

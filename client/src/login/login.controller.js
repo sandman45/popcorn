@@ -1,6 +1,4 @@
-/**
- * Created by matthew.sanders on 2/20/15.
- */
+
 controllers.controller('loginCtrl', ['$scope', 'service', '$location', '$modal', '$log', 'model',
   function($scope, service, $location, $modal, $log, model) {
 
@@ -14,7 +12,7 @@ controllers.controller('loginCtrl', ['$scope', 'service', '$location', '$modal',
     $scope.open = function (size) {
 
       var modalInstance = $modal.open({
-        templateUrl: '/js/app/playground/login/createAccountModal.html',
+        templateUrl: '/src/login/createAccountModal.html',
         controller: 'createAccountCtrl',
         size: size,
         resolve: {
@@ -45,7 +43,7 @@ controllers.controller('loginCtrl', ['$scope', 'service', '$location', '$modal',
             model.user.loggedIn = true;
             model.user.firstname;
             model.user.lastname;
-            $location.path('/playground/paleo');
+            $location.path('/home');
           }, function( err ){
             $log.error( err );
             $scope.alerts.push( { type:'danger', msg:err.message } );

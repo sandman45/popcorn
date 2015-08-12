@@ -11,12 +11,13 @@
   <link rel="stylesheet" href="lib/ui-bootstrap-custom-build/ui-bootstrap-custom-0.13.2-csp.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/popcorn-default.css">
 
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
   <link href="lib/colorpicker.css" rel="stylesheet">
 </head>
-<body>
+<body  class="popcornBackground">
   <!-- Navigation Bar -->
   <nav class="navbar navbar-default" ng-controller="navbarCtrl">
     <div class="container-fluid">
@@ -42,18 +43,13 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           </li>
         </ul>
-
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#/login">Login</a></li>
+          <li ng-hide="model.user.loggedIn"><a href="#/login">Login</a></li>
+          <li ng-show="model.user.loggedIn" ng-click="logout()"><a>Logout {{model.user.firstname}}</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
-
-
-  <div >
-    <img src="http://i.giphy.com/LSnUSeF7m5n8s.gif">
-  </div>
 
   <!-- ng-view -->
   <div ng-view>
@@ -84,6 +80,8 @@
 <script src="src/controllers/main.controller.js"></script>
 <script src="src/controllers/navbar.controller.js"></script>
 <script src="src/login/login.controller.js"></script>
+<script src="src/login/create.account.controller.js"></script>
+<script src="src/home/home.controller.js"></script>
 <script src="src/service/popcorn.service.js"></script>
 <script src="src/config/config.service.js"></script>
 <script src="src/model/model.js"></script>

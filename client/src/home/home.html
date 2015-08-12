@@ -1,0 +1,19 @@
+
+<div class="default-page" ng-init="init()">
+
+  <h1>Welcome, {{model.user.firstname}}</h1>
+
+  <h3>This is your home screen</h3>
+  <div>
+    <img src="http://i.giphy.com/LSnUSeF7m5n8s.gif">
+  </div>
+
+  <div class="challenge-list">
+
+      <li ng-repeat="c in challenges" class="challenge-item" ng-click="viewDetails(c.id)">
+          <div class="challenge-name">{{c.value.name}}</div>
+          <div class="challenge-created-by">{{c.value.created_by}}</div>
+      </li>
+
+  </div>
+</div>

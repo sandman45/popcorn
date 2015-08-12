@@ -5,6 +5,7 @@ var popcornApp = angular.module('popcorn', [
   'ui.bootstrap',
   'ngRoute',
   'colorpicker.module',
+  'controllers',
   'nvd3',
   'ngLodash'
 ]);
@@ -15,6 +16,11 @@ popcornApp.config(['$routeProvider',
       .when('/login', {
         templateUrl: 'src/login/login.html',
         controller: 'loginCtrl'
+        //secure:true
+      })
+      .when('/home', {
+        templateUrl: 'src/home/home.html',
+        controller: 'homeCtrl'
         //secure:true
       })
       .when('/main', {

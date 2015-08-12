@@ -24,8 +24,8 @@ module.exports = function(app){
   });
 
   app.get('/popcorn/getChallenge', function( req, res, next ){
-    couchService.getView('views','getChallengesByDate').then(function(){
-      res.send(200, 'success');
+    couchService.getView('views','getChallengesByDate').then(function( data ){
+      res.send(200, data);
     })
     .catch(function(err){
       res.send(500, err);
@@ -33,8 +33,8 @@ module.exports = function(app){
   });
 
   app.get('/popcorn/getChallenges', function( req, res, next ){
-    couchService.get().then(function(){
-      res.send(200, 'success');
+    couchService.get().then(function( data ){
+      res.send(200, data);
     })
       .catch(function(err){
         res.send(500, err);
