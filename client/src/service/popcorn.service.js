@@ -37,8 +37,24 @@ app.factory('service', function( $http, $q, $location, $log, config ) {
 
   service.getUser = function(id) {
     var d = $q.defer();
+
     var _url = url + "popcorn/user/" + id;
     $http.get( _url ).success( function( data, status, headers, config ) {
+      d.resolve( data );
+    })
+    .error( function( err, code ) {
+      d.reject( err );
+      $log.error( err);
+    });
+
+    return d.promise;
+  };
+
+  service.updateUser = function(doc) {
+    var d = $q.defer();
+
+    var _url = url + "popcorn/updateUser";
+    $http.post( _url, doc ).success( function( data, status, headers, config ) {
       d.resolve( data );
     })
     .error( function( err, code ) {
@@ -52,6 +68,7 @@ app.factory('service', function( $http, $q, $location, $log, config ) {
 
   service.getPaleoResults = function( id ) {
     var d = $q.defer();
+
     var _url = url + "popcorn/paleo-results/" + id;
     $http.get( _url ).success( function( data, status, headers, config ) {
       if( data ){
@@ -62,6 +79,7 @@ app.factory('service', function( $http, $q, $location, $log, config ) {
         d.reject( err );
         $log.error( err);
     });
+
     return d.promise;
   };
 
@@ -114,6 +132,21 @@ app.factory('service', function( $http, $q, $location, $log, config ) {
     var d = $q.defer();
     var _url = url + "popcorn/recipe/insertRecipe";
     $http.post( _url, recipeObj ).success( function( data, status, headers, config ) {
+      if( data ){
+        d.resolve( data );
+      }
+    })
+    .error( function( err, code ) {
+      d.reject( err );
+      $log.error( err );
+    });
+    return d.promise;
+  };
+
+  service.insertChallenge = function( obj ) {
+    var d = $q.defer();
+    var _url = url + "popcorn/createChallenge";
+    $http.post( _url, obj ).success( function( data, status, headers, config ) {
       if( data ){
         d.resolve( data );
       }

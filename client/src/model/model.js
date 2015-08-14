@@ -7,5 +7,6 @@ app.service('model', function() {
   this.user = {
 
   };
+  this.randomGiphyImages = [];
 
 });

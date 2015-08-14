@@ -10,7 +10,8 @@ module.exports = function(app){
     var challenge = {
       created_by: req.session.username,
       created_date: moment(),
-      name: req.body.name
+      name: req.body.name,
+      desc:req.body.desc
     };
 
     couchService.insert( challenge, 0 ).then( function( d ){

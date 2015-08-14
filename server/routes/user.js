@@ -77,4 +77,21 @@ module.exports = function(app){
       res.send( err.statusCode, err );
     });
   });
+
+  app.post( '/popcorn/updateUser', function( req, res, next ){
+    console.log( 'updateUser' );
+    var updateDoc =  req.body;
+
+    couchService.get(updateDoc._id).then(function(d){
+      updateDoc._rev = d._rev;
+      couchService.insert(updateDoc, d._id).then(function(returnDoc){
+        res.send(200, returnDoc);
+      }).fail(function(err){
+        console.log(err);
+      });
+    }).fail(function(err){
+      console.log(err);
+    });
+  });
+
 }
