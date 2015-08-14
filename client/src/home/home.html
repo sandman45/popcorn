@@ -4,13 +4,17 @@
   <h1>Welcome, {{model.user.firstname}}</h1>
 
   <h3>This is your home screen</h3>
+  <div class="challenge-item float-left" ng-click="randomGiphy()">Random Giphy Image</div>
+  <div class="challenge-item float-right" ng-click="keepImage()">Keep this Image</div>
   <div>
-    <img src="http://i.giphy.com/LSnUSeF7m5n8s.gif">
+    <img ng-src="{{homeImage}}">
   </div>
-
+  <div class="default-spacer"></div>
+  <div class="challenge-item" ng-click="open('lg')">Submit New Challenge</div>
+  <div class="default-spacer"></div>
   <div class="challenge-list">
 
-      <li ng-repeat="c in challenges" class="challenge-item" ng-click="viewDetails(c.id)">
+      <li ng-repeat="c in challenges" class="challenge-item" ng-click="viewDetails($index)">
           <div class="challenge-name">{{c.value.name}}</div>
           <div class="challenge-created-by">{{c.value.created_by}}</div>
       </li>

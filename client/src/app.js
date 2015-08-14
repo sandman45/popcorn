@@ -23,6 +23,11 @@ popcornApp.config(['$routeProvider',
         controller: 'homeCtrl'
         //secure:true
       })
+      .when('/challenge-detail', {
+        templateUrl: 'src/challenge/challenge-detail.html',
+        controller: 'challengeDetailCtrl'
+        //secure:true
+      })
       .when('/main', {
         templateUrl: '/index'
         //secure:true

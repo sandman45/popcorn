@@ -30,11 +30,21 @@
 /* http://paletton.com */
 
 
+.float-right{
+    float: right;
+}
+
+.float-left{
+    float: left;
+}
+
+
 .popcornBackground{
     background-image: url('../img/popcorn-background.jpg');
 }
 
 .default-page{
+    position: relative;
     font-family: "Roboto";
     border-radius: 5px;
     padding:12px;
@@ -42,6 +52,10 @@
     margin-right: 12px;
     background-color: #AA4639;
     color:white;
+}
+
+.default-spacer{
+    padding: 5px;
 }
 
 .challenge-list{
@@ -62,6 +76,19 @@
     background-color: #FFB4AA;
 }
 
+.challenge-item-default{
+    position: relative;
+    border-radius: 5px;
+    padding: 12px;
+    background-color: #802215;
+    margin-bottom: 3px;
+    cursor: pointer;
+}
+
+.challenge-item-default:hover{
+    background-color: #FFB4AA;
+}
+
 .challenge-name{
     position: absolute;
     top: 10px;
@@ -74,4 +101,9 @@
     position: absolute;
     right: 10px;
     bottom: 0px;
+}
+
+.challenge-detail-created-by{
+
+   float:right;
 }

@@ -1,6 +1,4 @@
-/**
- * Created by matthew.sanders on 2/20/15.
- */
+
 controllers.controller('createAccountCtrl', ['$scope', '$modalInstance', 'service', '$location', '$log', 'utils',
   function($scope, $modalInstance, service, $location, $log, utils) {
 
