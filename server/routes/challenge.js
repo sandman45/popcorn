@@ -37,9 +37,9 @@ module.exports = function(app){
     couchService.get().then(function( data ){
       res.send(200, data);
     })
-      .catch(function(err){
-        res.send(500, err);
-      });
+    .catch(function(err){
+      res.send(500, err);
+    });
   });
 
-}
+};
